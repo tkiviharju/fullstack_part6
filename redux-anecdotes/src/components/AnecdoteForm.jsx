@@ -18,6 +18,6 @@ const AnecdoteForm = ({ store }) => {
 			</form>
 		</>
 	);
-}
+};
 
 export default AnecdoteForm;
