@@ -22,6 +22,11 @@ export const addVote = (id) => ({
 	data: { id }
 });
 
+export const createNew = (anecdote) => ({
+	type: 'NEW_ANECDOTE',
+	data: asObject(anecdote)
+});
+
 const initialState = anecdotesAtStart.map(asObject);
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +45,8 @@ const reducer = (state = initialState, action) => {
 				:
 				anecdote
 		));
+	} else if (type === 'NEW_ANECDOTE'){
+		return state.concat(data);
 	}
 	return state;
 };
