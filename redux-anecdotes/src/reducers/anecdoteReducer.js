@@ -1,3 +1,11 @@
+export const asObject = (anecdote) => {
+	return {
+		content: anecdote,
+		votes: 0
+	};
+};
+
+
 const sortByVotes = (anecdote1, anecdote2) => (
 	anecdote2.votes - anecdote1.votes
 );
