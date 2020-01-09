@@ -17,6 +17,10 @@ const asObject = (anecdote) => {
 	};
 };
 
+const sortByVotes = (anecdote1, anecdote2) => (
+	anecdote2.votes - anecdote1.votes
+);
+
 export const addVote = (id) => ({
 	type: 'INCREMENT_VOTE',
 	data: { id }
@@ -44,9 +48,9 @@ const reducer = (state = initialState, action) => {
 				}
 				:
 				anecdote
-		));
+		)).sort(sortByVotes);
 	} else if (type === 'NEW_ANECDOTE'){
-		return state.concat(data);
+		return state.concat(data).sort(sortByVotes);
 	}
 	return state;
 };
