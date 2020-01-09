@@ -1,11 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { addVote } from '../reducers/anecdoteReducer.js';
 
-const AnecdoteForm = ({ store }) => {
-	const { anecdotes, filter } = store.getState();
+const AnecdoteList = ({ anecdotes, filter, dispatchAddVote }) => {
 
 	const vote = (id) => {
-		store.dispatch(addVote(id));
+		dispatchAddVote(id);
 	};
 
 	return (
@@ -28,4 +28,14 @@ const AnecdoteForm = ({ store }) => {
 	);
 };
 
-export default AnecdoteForm;
+const mapStateToProps = (state) => ({
+	filter: state.filter,
+	anecdotes: state.anecdotes,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	dispatchAddVote: id => dispatch(addVote(id))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnecdoteList);

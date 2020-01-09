@@ -5,15 +5,15 @@ import AnecdoteList from './components/AnecdoteList.jsx';
 import Notification from './components/Notification.jsx';
 import Filter from './components/Filter.jsx';
 
-const App = ({ store }) => {
+const App = () => {
 
 	return (
 		<div>
 			<h2>Anecdotes</h2>
-			<Filter store={store} />
-			<Notification store={store} />
-			<AnecdoteList store={store} />
-			<AnecdoteForm store={store} />
+			<Filter />
+			<Notification />
+			<AnecdoteList />
+			<AnecdoteForm />
 		</div>
 	);
 };
