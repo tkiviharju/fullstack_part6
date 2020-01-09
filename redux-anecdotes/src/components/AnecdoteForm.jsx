@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNew } from '../reducers/anecdoteReducer.js';
+import { createNotification, removeNotification } from '../reducers/notificationReducer.js';
 
 const AnecdoteForm = ({ store }) => {
 
@@ -7,6 +8,10 @@ const AnecdoteForm = ({ store }) => {
 		event.preventDefault();
 		const { value } = event.target.anecdote;
 		store.dispatch(createNew(value));
+		const notification = `Anecdote ${value} added`;
+		store.dispatch(createNotification(notification));
+		setTimeout(() => store.dispatch(removeNotification()), 5000);
+		event.target.anecdote.value = '';
 	};
 
 	return (
